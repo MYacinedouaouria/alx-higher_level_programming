@@ -3,7 +3,7 @@
 #include "lists.h"
 
 /**
- *print_list - prints all ellements of a listint_t list
+ *print_listint - prints all ellements of a listint_t list
  *@h:pointer to head of listint_t list
  *Return:number of nodes
  *
@@ -22,4 +22,27 @@ size_t	print_listint(const listint_t *h)
 		n++;
 	}
 	return (n);
+}
+
+/**
+ *add_nodeint - adds a new node at the beginning of a listint_t list
+ *@head:a pointer to a pointer of the start of the list
+ *@n:integer to add in the new node
+ *Return:address of the new element or null if it fail
+ *
+ *
+ */
+listint_t	*add_nodeint(listint_t **head, const int n)
+{
+	listint_t *new;
+
+	new = malloc(sizeof(listint_t));
+	if (new == NULL)
+		return (NULL);
+
+	new->n = n;
+	new->next = *head;
+	*head = new;
+
+	return (new);
 }
