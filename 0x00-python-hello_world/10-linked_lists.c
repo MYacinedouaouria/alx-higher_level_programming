@@ -18,7 +18,8 @@ size_t	print_listint(const listint_t *h)
 	n = 0;
 	while (current != NULL)
 	{
-		printf("%i\n", current->next);
+		printf("%i\n", current->n);
+		current = current->next;
 		n++;
 	}
 	return (n);
@@ -57,7 +58,7 @@ listint_t	*add_nodeint(listint_t **head, const int n)
  */
 void	free_listint(listint_t *head)
 {
-	listint *current;
+	listint_t *current;
 
 	while (head != NULL)
 	{
@@ -65,30 +66,4 @@ void	free_listint(listint_t *head)
 		head = head->next;
 		free(current);
 	}
-}
-
-/**
- *check_cycle - checks if a singly linked listint_t list has a cycle in it
- *@list: the list to be checked
- *Return:0 if ther is no cycle, else 1 if the is a cycle
- *
- *
- */
-int	check_cycle(listint_t *list)
-{
-	listint_t *current;
-
-	if (list == NULL)
-		return (0);
-
-	current = list;
-	while (current != NULL)
-	{
-		if (current->next == *list)
-			return (1);
-
-		current = current->next;
-
-	}
-	return (0);
 }
