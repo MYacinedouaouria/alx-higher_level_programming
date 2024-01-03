@@ -46,3 +46,23 @@ listint_t	*add_nodeint(listint_t **head, const int n)
 
 	return (new);
 }
+
+/**
+ *free_listint - frees a listint_t list
+ *@head:a pointer to the head of the list to be freed
+ *
+ *
+ *
+ *
+ */
+void	free_listint(listint_t *head)
+{
+	listint *current;
+
+	while (head != NULL)
+	{
+		current = head;
+		head = head->next;
+		free(current);
+	}
+}
