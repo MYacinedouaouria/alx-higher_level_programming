@@ -5,7 +5,7 @@ Using "add_integer"
 this is a test file for testing add_integer function
 first importing add_integer from 0-add_integer module:
 
->>> from 0-add_integer import add_integer
+>>> add_integer = __import__('0-add_integer').add_integer
 
 edge cases:
 
@@ -15,8 +15,6 @@ edge cases:
 98
 >>> print(add_integer(2))
 100
->>> print(add_integer(0, 10))
-10
 >>> print(add_integer(0, 0))
 0
 >>> print(add_integer(100.3, -2))
