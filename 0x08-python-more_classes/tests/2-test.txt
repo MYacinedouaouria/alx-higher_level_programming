@@ -3,7 +3,7 @@ this is a test file to test a real definition of a rectangle class and its funct
 
 first importing the class Rectangle from the '2-rectangle' module 
 
->>> Rectangle = __import__('1-rectangle').Rectangle
+>>> Rectangle = __import__('2-rectangle').Rectangle
 
 use cases:
 >>> my_rectangle = Rectangle(2, 4)
