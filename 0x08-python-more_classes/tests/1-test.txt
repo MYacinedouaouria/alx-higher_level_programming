@@ -18,11 +18,11 @@ TypeError: width must be an integer
 >>> my_rectangle4 = Rectangle(2, -4)
 Traceback (most recent call last):
 ...
-ValueError : height must be >= 0
+ValueError: height must be >= 0
 >>> my_rectangle5 = Rectangle(-2, 4)
 Traceback (most recent call last):
 ...
-ValueError : width must be >= 0
+ValueError: width must be >= 0
 >>> print(my_rectangle.__dict__)
 {'_Rectangle__height': 4, '_Rectangle__width': 2}
 >>> my_rectangle.width = 10
