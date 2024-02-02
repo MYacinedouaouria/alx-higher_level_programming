@@ -1,0 +1,35 @@
+this is a test file to test a real definition of a rectangle class and its functions Area and Perimeter
+================================================================
+
+first importing the class Rectangle from the '2-rectangle' module 
+
+>>> Rectangle = __import__('1-rectangle').Rectangle
+
+use cases:
+>>> my_rectangle = Rectangle(2, 4)
+>>> print("Area: {} - Perimeter: {}".format(my_rectangle.area(), my_rectangle.perimeter()))
+Area: 8 - Perimeter: 12
+>>> my_rectangle2 = Rectangle(2, "a")
+Traceback (most recent call last):
+...
+TypeError: height must be an integer
+>>> my_rectangle3 = Rectangle("a")
+Traceback (most recent call last):
+...
+TypeError: width must be an integer
+>>> my_rectangle4 = Rectangle(2, -4)
+Traceback (most recent call last):
+...
+ValueError: height must be >= 0
+>>> my_rectangle5 = Rectangle(-2, 4)
+Traceback (most recent call last):
+...
+ValueError: width must be >= 0
+>>> print(my_rectangle.__dict__)
+{'_Rectangle__height': 4, '_Rectangle__width': 2}
+>>> my_rectangle.width = 10
+>>> my_rectangle.height = 3
+>>> print(my_rectangle.__dict__)
+{'_Rectangle__height': 3, '_Rectangle__width': 10}
+>>> print("Area: {} - Perimeter: {}".format(my_rectangle.area(), my_rectangle.perimeter()))
+Area: 30 - Perimeter: 26
