@@ -1,0 +1,16 @@
+this is a test file
+===================
+
+testing a simple rectangle class
+---------------------------------
+
+first importing the Rectangle class from the '0-rectangle' module
+
+>>> Rectangle = __import__('0-rectangle').Rectangle
+
+use cases:
+>>> my_rectangle = Rectangle()
+>>> print(type(my_rectangle))
+<class '0-rectangle.Rectangle'>
+>>> print(my_rectangle.__dict__)
+{}
