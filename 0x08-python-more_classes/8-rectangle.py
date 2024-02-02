@@ -107,7 +107,12 @@ class Rectangle:
         """compares 2 Rectangls objects
            and return the bigest one based on the area"""
 
-        if ((rect_1.area()) >= (rect_2.area())):
-            return rect_1
+        if (isinstance(rect_1, Rectangle) and (isinstance(rect_2, Rectangle))):
+            if ((rect_1.area()) >= (rect_2.area())):
+                return rect_1
+            else:
+                return rect_2
+        elif (not isinstance(rect_1, Rectangle)):
+            raise TypeError('rect_1 must be an instance of Rectangle')
         else:
-            return rect_2
+            raise TypeError('rect_2 must be an instance of Rectangle')
