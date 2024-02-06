@@ -1,12 +1,15 @@
 #!/usr/bin/python3
 """
-   this module define the class MyList
+   1-my_list module
+   ================
+   this module provides a custom list class
 """
 
 
 class MyList(list):
     """
        this class inherit from the list class
+       attributes : inherits all attribute of list class
        methods: print_sorted(self)  prints the list but in sorted order
     """
 
