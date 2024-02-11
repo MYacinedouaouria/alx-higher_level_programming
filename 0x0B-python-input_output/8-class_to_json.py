@@ -19,5 +19,5 @@ def class_to_json(obj):
         elif (isinstance(value, dict)):
             serialized[key] = value.copy()
         elif (isinstance(value, list)):
-            serialized[key] = [class_to_json(item) for item in value]
+            serialized[key] = value.copy()
     return serialized
