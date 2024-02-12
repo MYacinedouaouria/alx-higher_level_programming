@@ -51,22 +51,46 @@ class Rectangle(Base):
     def width(self, width):
         """ sets the width"""
 
-        self.__width = width
+        if isinstance(width, int):
+            if (width <= 0):
+                raise ValueError("width must be > 0")
+            else:
+                self.__width = width
+        else:
+            raise TypeError("width must be an integer")
 
     @height.setter
     def height(self, height):
         """sets the height"""
 
-        self.__height = height
+        if isinstance(height, int):
+            if (height <= 0):
+                raise ValueError("height must be > 0")
+            else:
+                self.__height = height
+        else:
+            raise TypeError("height must be an integer")
 
     @x.setter
     def x(self, x):
         """sets the x attribute"""
 
-        self.__x = x
+        if (isinstance(x, int)):
+            if (x < 0):
+                raise ValueError("x must be >= 0")
+            else:
+                self.__x = x
+        else:
+            raise TypeError("x must be an integer")
 
     @y.setter
     def y(self, y):
         """sets the attribute y"""
 
-        self.__y = y
+        if (isinstance(y, int)):
+            if (y < 0):
+                raise ValueError("y must be >= 0")
+            else:
+                self.__y = y
+        else:
+            raise TypeError("y must be an integer")
