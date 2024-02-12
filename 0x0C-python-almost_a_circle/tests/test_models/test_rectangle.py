@@ -1,8 +1,10 @@
 import unittest
-from models.rectangle import Rectangle
+from models.rectangle import Rectangle, Base
 
 
 class TestRectangle(unittest.TestCase):
+    def setUp(self):
+        Base.reset_nb_objects()
 
     def test_rectangle(self):
         r1 = Rectangle(10, 2)
@@ -17,11 +19,11 @@ class TestRectangle(unittest.TestCase):
     def test_invalid_width_type(self):
         with self.assertRaises(TypeError) as e:
             Rectangle("w", 2)
-        self.assertEqual(str(e.exception), "Width must be an integer")
+        self.assertEqual(str(e.exception), "width must be an integer")
 
         with self.assertRaises(TypeError) as e:
             Rectangle(None, 2)
-        self.assertEqual(str(e.exception), "Width must be an integer")
+        self.assertEqual(str(e.exception), "width must be an integer")
 
     def test_invalid_height_type(self):
         with self.assertRaises(TypeError) as e:
@@ -53,11 +55,11 @@ class TestRectangle(unittest.TestCase):
     def test_width_under_or_equal_zero(self):
         with self.assertRaises(ValueError) as e:
             Rectangle(0, 2)
-        self.assertEqual(str(e.exception), "Width must be > 0")
+        self.assertEqual(str(e.exception), "width must be > 0")
 
         with self.assertRaises(ValueError) as e:
             Rectangle(-5, 2)
-        self.assertEqual(str(e.exception), "Width must be > 0")
+        self.assertEqual(str(e.exception), "width must be > 0")
 
     def test_height_under_or_equal_zero(self):
         with self.assertRaises(ValueError) as e:
