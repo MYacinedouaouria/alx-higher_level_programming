@@ -22,3 +22,9 @@ class Base:
         else:
             Base.__nb_objects += 1
             self.id = Base.__nb_objects
+
+    @classmethod
+    def reset_nb_objects(cls):
+        """ reset the counter of objects to 0"""
+
+        cls.__nb_objects = 0
