@@ -16,6 +16,14 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(r3.id, 12)
         self.assertEqual(r4.id, 3)
 
+    def test_area(self):
+        r1 = Rectangle(3, 2)
+        r2 = Rectangle(2, 10)
+        r3 = Rectangle(8, 7, 0, 0, 12)
+        self.assertEqual(r1.area(), 6)
+        self.assertEqual(r2.area(), 20)
+        self.assertEqual(r3.area(), 56)
+
     def test_invalid_width_type(self):
         with self.assertRaises(TypeError) as e:
             Rectangle("w", 2)
