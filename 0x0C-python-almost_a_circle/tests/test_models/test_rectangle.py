@@ -28,6 +28,34 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(r3.area(), 56)
 
 
+class TestPrintRectangle(unittest.TestCase):
+
+    @classmethod
+    def setUPClass(self):
+        Base.reset_nb_objects()
+
+    def setUP(self):
+        self.captured_output = StringIO()
+        sys.stdout = self.captured_output
+
+    def tearDown(self):
+        sys.stdout = sys.__stdout__
+        self.captured_output.truncate(0)
+        self.captured_output.seek(0)
+
+    def test_print_with_id_provided():
+        r1 = Rectangle(4, 6, 2, 1, 12)
+        print(r1)
+        output = self.captured_output.getvalue()
+        expected_output = "[Rectangle] (12) 2/1 - 4/6\n"
+
+    def test_print_withid_increment(self):
+        r2 = Rectangle(5, 5, 1)
+        print(r2)
+        output = self.captured_output.getvalue()
+        expected_output = "[Rectangle] (1) 1/0 - 5/5\n"
+
+
 class TestDisplay(unittest.TestCase):
 
     def setUp(self):
