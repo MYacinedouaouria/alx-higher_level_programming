@@ -24,13 +24,21 @@ class Rectangle(Base):
         self.x = x
         self.y = y
 
+    def __str__(self):
+        """returns a string tha represent the rectangle"""
+
+        id = self.id
+        w = self.width
+        h = self.height
+        return f"[Rectangle] ({id}) {self.x}/{self.y} - {w}/{h}"
+
     def area(self):
         """ returns the area of a rectangle"""
 
         return self.width * self.height
 
     def display(self):
-        """ displays a rectangle with the caracter #"""
+        """ displays a rectangle with the caracter '#'"""
         for i in range(self.height):
             for j in range(self.width):
                 print("#", end="")

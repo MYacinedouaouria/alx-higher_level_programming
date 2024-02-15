@@ -34,7 +34,7 @@ class TestPrintRectangle(unittest.TestCase):
     def setUPClass(self):
         Base.reset_nb_objects()
 
-    def setUP(self):
+    def setUp(self):
         self.captured_output = StringIO()
         sys.stdout = self.captured_output
 
@@ -43,7 +43,7 @@ class TestPrintRectangle(unittest.TestCase):
         self.captured_output.truncate(0)
         self.captured_output.seek(0)
 
-    def test_print_with_id_provided():
+    def test_print_with_id_provided(self):
         r1 = Rectangle(4, 6, 2, 1, 12)
         print(r1)
         output = self.captured_output.getvalue()
