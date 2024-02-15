@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 """ this module defines class Rectangle that inherits from Base """
 
 
