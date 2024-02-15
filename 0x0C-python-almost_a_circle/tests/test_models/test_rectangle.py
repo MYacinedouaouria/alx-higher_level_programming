@@ -1,9 +1,11 @@
 import unittest
 from models.rectangle import Rectangle, Base
+from io import StringIO
+import sys
 
 
 class TestRectangle(unittest.TestCase):
-    def setUp(self):
+    def setUpClass(self):
         Base.reset_nb_objects()
 
     def test_rectangle(self):
@@ -24,9 +26,42 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(r2.area(), 20)
         self.assertEqual(r3.area(), 56)
 
+
+class TestDisplay(unitest.TestCase):
+
+    def setUp(self):
+        captured_output = String_IO()
+        sys.stdout = captured_output
+
+    def tearDown(self):
+        sys.stdout = sys.__stdout__
+        self.captured_output.truncate(0)
+        self.captured_output.seek(0)
+
+    def test_display(self):
+        r = Rectangle(3, 2)
+        r.display()
+        output = captured_output.getvalue()
+        expected_output = "###\n###\n"
+        self.assertEqual(output, expected_output)
+
+    def test_display2(self):
+        r = Rectangle(6, 4)
+        r.display()
+        output = captured_output.getvalue()
+        expected_output = "######\n######\n######\n######\n"
+        self.assertEqual(output, expected_output)
+
+
+class TestRectangleInputsTypes(unittest.TestCase):
+
     def test_invalid_width_type(self):
         with self.assertRaises(TypeError) as e:
             Rectangle("w", 2)
+        self.assertEqual(str(e.exception), "width must be an integer")
+
+        with self.assertRaises(TypeError) as e:
+            Rectangle(None, 2)
         self.assertEqual(str(e.exception), "width must be an integer")
 
         with self.assertRaises(TypeError) as e:
@@ -59,6 +94,9 @@ class TestRectangle(unittest.TestCase):
         with self.assertRaises(TypeError) as e:
             Rectangle(2, 3, 2, None)
         self.assertEqual(str(e.exception), "y must be an integer")
+
+
+class TestRectangleInputsValues(unittest.TestCase):
 
     def test_width_under_or_equal_zero(self):
         with self.assertRaises(ValueError) as e:
