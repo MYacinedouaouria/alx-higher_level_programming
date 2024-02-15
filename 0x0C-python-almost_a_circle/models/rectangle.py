@@ -29,6 +29,13 @@ class Rectangle(Base):
 
         return self.width * self.height
 
+    def display(self):
+        """ displays a rectangle with the caracter #"""
+        for i in range(self.height):
+            for j in range(self.width):
+                print("#", end="")
+            print()
+
     @property
     def width(self):
         """retrives the width of the Rectangle"""

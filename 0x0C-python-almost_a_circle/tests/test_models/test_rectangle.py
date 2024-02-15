@@ -5,7 +5,8 @@ import sys
 
 
 class TestRectangle(unittest.TestCase):
-    def setUpClass(self):
+
+    def setUp(self):
         Base.reset_nb_objects()
 
     def test_rectangle(self):
@@ -27,11 +28,11 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(r3.area(), 56)
 
 
-class TestDisplay(unitest.TestCase):
+class TestDisplay(unittest.TestCase):
 
     def setUp(self):
-        captured_output = String_IO()
-        sys.stdout = captured_output
+        self.captured_output = StringIO()
+        sys.stdout = self.captured_output
 
     def tearDown(self):
         sys.stdout = sys.__stdout__
@@ -41,14 +42,14 @@ class TestDisplay(unitest.TestCase):
     def test_display(self):
         r = Rectangle(3, 2)
         r.display()
-        output = captured_output.getvalue()
+        output = self.captured_output.getvalue()
         expected_output = "###\n###\n"
         self.assertEqual(output, expected_output)
 
     def test_display2(self):
         r = Rectangle(6, 4)
         r.display()
-        output = captured_output.getvalue()
+        output = self.captured_output.getvalue()
         expected_output = "######\n######\n######\n######\n"
         self.assertEqual(output, expected_output)
 
