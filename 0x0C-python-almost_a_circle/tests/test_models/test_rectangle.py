@@ -170,6 +170,66 @@ class TestUpdate_argv(unittest.TestCase):
         self.assertEqual(output, expected_output)
 
 
+class TestUpdate_KWargs(unittest.TestCase):
+    def setUp(self):
+        self.captured_output = StringIO()
+        sys.stdout = self.captured_output
+        Base.reset_nb_objects()
+
+    def tearDown(self):
+        sys.stdout = sys.__stdout__
+        self.captured_output.truncate(0)
+        self.captured_output.truncate(0)
+
+    def test_update_with_one_kwargs(self):
+        r = Rectangle(10, 10, 10, 10)
+        r.update(height=1)
+        print(r)
+        output = self.captured_output.getvalue()
+        expected_output = "[Rectangle] (1) 10/10 - 10/1\n"
+        self.assertEqual(output, expected_output)
+
+    def test_update_with_two_kwargs(self):
+        r = Rectangle(10, 10, 10, 10)
+        r.update(width=1, x=2)
+        print(r)
+        output = self.captured_output.getvalue()
+        expected_output = "[Rectangle] (1) 2/10 - 1/10\n"
+        self.assertEqual(output, expected_output)
+
+    def test_update_with_four1_kwargs(self):
+        r = Rectangle(10, 10, 10, 10)
+        r.update(y=1, width=2, x=3, id=89)
+        print(r)
+        output = self.captured_output.getvalue()
+        expected_output = "[Rectangle] (89) 3/1 - 2/10\n"
+        self.assertEqual(output, expected_output)
+
+    def test_update_with_four_arg(self):
+        r = Rectangle(10, 10, 10, 10)
+        r.update(x=1, height=2, y=3, width=4)
+        print(r)
+        output = self.captured_output.getvalue()
+        expected_output = "[Rectangle] (1) 1/3 - 2/4\n"
+        self.assertEqual(output, expected_output)
+
+    def test_update_with_five_arg(self):
+        r = Rectangle(10, 10, 10, 10)
+        r.update(x=1, height=2, y=3, width=4, id=89)
+        print(r)
+        output = self.captured_output.getvalue()
+        expected_output = "[Rectangle] (89) 1/3 - 4/2\n"
+        self.assertEqual(output, expected_output)
+
+    def test_update_with_zero_kwargs(self):
+        r = Rectangle(10, 10, 10, 10)
+        r.update()
+        print(r)
+        output = self.captured_output.getvalue()
+        expected_output = "[Rectangle] (1) 10/10 - 10/10\n"
+        self.assertEqual(output, expected_output)
+
+
 class TestRectangleInputsTypes(unittest.TestCase):
 
     def test_invalid_width_type(self):
