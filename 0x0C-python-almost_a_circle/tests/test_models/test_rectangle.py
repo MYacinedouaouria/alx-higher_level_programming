@@ -76,7 +76,7 @@ class TestDisplay(unittest.TestCase):
         self.assertEqual(output, expected_output)
 
     def test_display2(self):
-        r = Rectangle(6, 4)
+        r = Rectangle(6, 4, 0)
         r.display()
         output = self.captured_output.getvalue()
         expected_output = "######\n######\n######\n######\n"
