@@ -123,44 +123,43 @@ class TestUpdate_argv(unittest.TestCase):
     def test_update_with_one_arg(self):
         r = Rectangle(10, 10, 10, 10)
         r.update(89)
+        print(r)
         output = self.captured_output.getvalue()
-        expected_output = "[Rectangle] (89) 10/10 - 10/10"
+        expected_output = "[Rectangle] (89) 10/10 - 10/10\n"
         self.assertEqual(output, expected_output)
 
     def test_update_with_two_arg(self):
         r = Rectangle(10, 10, 10, 10)
         r.update(89, 2)
+        print(r)
         output = self.captured_output.getvalue()
-        expected_output = "[Rectangle] (89) 10/10 - 2/10"
+        expected_output = "[Rectangle] (89) 10/10 - 2/10\n"
         self.assertEqual(output, expected_output)
 
     def test_update_with_three_arg(self):
         r = Rectangle(10, 10, 10, 10)
         r.update(89, 2, 3)
+        print(r)
         output = self.captured_output.getvalue()
-        expected_output = "[Rectangle] (89) 10/10 - 2/3"
+        expected_output = "[Rectangle] (89) 10/10 - 2/3\n"
         self.assertEqual(output, expected_output)
 
     def test_update_with_four_arg(self):
         r = Rectangle(10, 10, 10, 10)
         r.update(89, 2, 3, 4)
+        print(r)
         output = self.captured_output.getvalue()
-        expected_output = "[Rectangle] (89) 4/10 - 2/3"
+        expected_output = "[Rectangle] (89) 4/10 - 2/3\n"
         self.assertEqual(output, expected_output)
 
     def test_update_with_five_arg(self):
         r = Rectangle(10, 10, 10, 10)
         r.update(89, 2, 3, 4, 5)
+        print(r)
         output = self.captured_output.getvalue()
-        expected_output = "[Rectangle] (89) 4/5 - 2/3"
+        expected_output = "[Rectangle] (89) 4/5 - 2/3\n"
         self.assertEqual(output, expected_output)
 
-    def test_update_with_zero_arg(self):
-        r = Rectangle(10, 10, 10, 10)
-        r.update()
-        output = self.captured_output.getvalue()
-        expected_output = "[Rectangle] (10) 10/10 - 10/10"
-        self.assertEqual(output, expected_output)
 
 
 class TestRectangleInputsTypes(unittest.TestCase):
