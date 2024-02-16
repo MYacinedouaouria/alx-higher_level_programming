@@ -210,7 +210,7 @@ class TestUpdate_KWargs(unittest.TestCase):
         r.update(x=1, height=2, y=3, width=4)
         print(r)
         output = self.captured_output.getvalue()
-        expected_output = "[Rectangle] (1) 1/3 - 2/4\n"
+        expected_output = "[Rectangle] (1) 1/3 - 4/2\n"
         self.assertEqual(output, expected_output)
 
     def test_update_with_five_arg(self):
