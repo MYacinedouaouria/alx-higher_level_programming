@@ -83,7 +83,7 @@ class TestDisplay(unittest.TestCase):
         self.assertEqual(output, expected_output)
 
 
-class TestDisplay_Position(self):
+class TestDisplay_Position(unittest.TestCase):
 
     def setUp(self):
         self.captured_output = StringIO()
