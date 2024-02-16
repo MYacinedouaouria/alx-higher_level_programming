@@ -63,6 +63,8 @@ class Rectangle(Base):
             self.x = args[3]
         if len(args) >= 5:
             self.y = args[4]
+        if len(args) == 0:
+            self.id = self.id
 
     @property
     def width(self):

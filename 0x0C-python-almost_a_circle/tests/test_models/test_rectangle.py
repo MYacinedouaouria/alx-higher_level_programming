@@ -114,6 +114,7 @@ class TestUpdate_argv(unittest.TestCase):
     def setUp(self):
         self.captured_output = StringIO()
         sys.stdout = self.captured_output
+        Base.reset_nb_objects()
 
     def tearDown(self):
         sys.stdout = sys.__stdout__
@@ -160,6 +161,13 @@ class TestUpdate_argv(unittest.TestCase):
         expected_output = "[Rectangle] (89) 4/5 - 2/3\n"
         self.assertEqual(output, expected_output)
 
+    def test_update_with_zero_arg(self):
+        r = Rectangle(10, 10, 10, 10)
+        r.update()
+        print(r)
+        output = self.captured_output.getvalue()
+        expected_output = "[Rectangle] (1) 10/10 - 10/10\n"
+        self.assertEqual(output, expected_output)
 
 
 class TestRectangleInputsTypes(unittest.TestCase):
