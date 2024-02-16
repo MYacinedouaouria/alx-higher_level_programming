@@ -82,6 +82,32 @@ class TestDisplay(unittest.TestCase):
         self.assertEqual(output, expected_output)
 
 
+class TestDisplay_Position(self):
+
+    def setUp(self):
+        self.captured_output = StringIO()
+        sys.stdout = self.captured_output
+
+    def tearDown(self):
+        sys.stdout = sys.__stdout__
+        self.captured_output.truncate(0)
+        self.captured_output.truncate(0)
+
+    def test_display_position(self):
+        r = Rectangle(2, 3, 2, 2)
+        r.display()
+        output = self.captured_output.getvalue()
+        expected_output = "\n\n  ##\n  ##\n  ##\n"
+        self.assertEqual(output, expected_output)
+
+    def test_display_position2(self):
+        r = Rectangle(3, 2, 1, 0)
+        r.display()
+        output = self.captured_output.getvalue()
+        expected_output = " ###\n ###\n"
+        self.assertEqual(output, expected_output)
+
+
 class TestRectangleInputsTypes(unittest.TestCase):
 
     def test_invalid_width_type(self):
