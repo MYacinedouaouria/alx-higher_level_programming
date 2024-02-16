@@ -7,7 +7,7 @@ from io import stringIO
 import unittest
 
 
-class TestPrintSquare(unittest.TestCase):
+class TestPrintSquare_Andarea(unittest.TestCase):
 
     @classmethod
     def setUPClass(self):
@@ -27,6 +27,7 @@ class TestPrintSquare(unittest.TestCase):
         print(s)
         output = self.captured_output.getvalue()
         expected_output = "[Square] (1) 0/0 - 5\n"
+        self.assertEqual(s.area(), 25)
         self.assertEqual(output, expected_output)
 
     def test_print_with_2args(self):
@@ -34,6 +35,7 @@ class TestPrintSquare(unittest.TestCase):
         print(s)
         output = self.captured_output.getvalue()
         expected_output = "[Square] (2) 2/0 - 2\n"
+        self.assertEqual(s.area(), 4)
         self.assertEqual(output, expected_output)
 
     def test_print_with_3args(self):
@@ -41,6 +43,7 @@ class TestPrintSquare(unittest.TestCase):
         print(s)
         output = self.captured_output.getvalue()
         expected_output = "[Square] (3) 1/3 - 3\n"
+        self.assertEqual(s.area(), 9)
         self.assertEqual(output, expected_output)
 
     def test_print_with_4args(self):
@@ -48,4 +51,5 @@ class TestPrintSquare(unittest.TestCase):
         print(s)
         output = self.captured_output.getvalue()
         expected_output = "[Square] (89) 1/3 - 3\n"
+        self.assertEqual(s.area(), 9)
         self.assertEqual(output, expected_output)
