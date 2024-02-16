@@ -109,6 +109,60 @@ class TestDisplay_Position(unittest.TestCase):
         self.assertEqual(output, expected_output)
 
 
+class TestUpdate_argv(unittest.TestCase):
+
+    def setUp(self):
+        self.captured_output = StringIO()
+        sys.stdout = self.captured_output
+
+    def tearDown(self):
+        sys.stdout = sys.__stdout__
+        self.captured_output.truncate(0)
+        self.captured_output.truncate(0)
+
+    def test_update_with_one_arg(self):
+        r = Rectangle(10, 10, 10, 10)
+        r.update(89)
+        output = self.captured_output.getvalue()
+        expected_output = "[Rectangle] (89) 10/10 - 10/10"
+        self.assertEqual(output, expected_output)
+
+    def test_update_with_two_arg(self):
+        r = Rectangle(10, 10, 10, 10)
+        r.update(89, 2)
+        output = self.captured_output.getvalue()
+        expected_output = "[Rectangle] (89) 10/10 - 2/10"
+        self.assertEqual(output, expected_output)
+
+    def test_update_with_three_arg(self):
+        r = Rectangle(10, 10, 10, 10)
+        r.update(89, 2, 3)
+        output = self.captured_output.getvalue()
+        expected_output = "[Rectangle] (89) 10/10 - 2/3"
+        self.assertEqual(output, expected_output)
+
+    def test_update_with_four_arg(self):
+        r = Rectangle(10, 10, 10, 10)
+        r.update(89, 2, 3, 4)
+        output = self.captured_output.getvalue()
+        expected_output = "[Rectangle] (89) 4/10 - 2/3"
+        self.assertEqual(output, expected_output)
+
+    def test_update_with_five_arg(self):
+        r = Rectangle(10, 10, 10, 10)
+        r.update(89, 2, 3, 4, 5)
+        output = self.captured_output.getvalue()
+        expected_output = "[Rectangle] (89) 4/5 - 2/3"
+        self.assertEqual(output, expected_output)
+
+    def test_update_with_zero_arg(self):
+        r = Rectangle(10, 10, 10, 10)
+        r.update()
+        output = self.captured_output.getvalue()
+        expected_output = "[Rectangle] (10) 10/10 - 10/10"
+        self.assertEqual(output, expected_output)
+
+
 class TestRectangleInputsTypes(unittest.TestCase):
 
     def test_invalid_width_type(self):
