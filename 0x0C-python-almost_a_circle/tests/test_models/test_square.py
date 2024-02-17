@@ -229,3 +229,28 @@ class TestUpdateSquare(unittest.TestCase):
         output = self.captured_output.getvalue()
         expected_output = "[Square] (1) 3/4 - 2\n"
         self.assertEqual(output, expected_output)
+
+
+class TestSquareToDictionry(unittest.TestCase):
+
+    @classmethod
+    def setUPClass(self):
+        Base.reset_nb_objects()
+
+    def setUp(self):
+        self.captured_output = StringIO()
+        sys.stdout = self.captured_output
+        Base.reset_nb_objects()
+
+    def tearDown(self):
+        sys.stdout = sys.__stdout__
+        self.captured_output.truncate(0)
+        self.captured_output.seek(0)
+
+    def test_square_to_dictionary(self):
+        s1 = Square(10, 2, 1)
+        s1_dictionary = s1.to_dictionary()
+        print(s1_dictionary)
+        output = self.captured_output.getvalue()
+        expected_output = "{'id': 1, 'x': 2, 'size': 10, 'y': 1}"
+        self.assertEqual(output, expected_output)
