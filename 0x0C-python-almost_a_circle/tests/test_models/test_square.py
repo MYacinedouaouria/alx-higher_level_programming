@@ -159,34 +159,34 @@ class TestUpdateSquare(unittest.TestCase):
 
     def test_update_with_1args(self):
         s = Square(5)
-        s.update(10)
+        s.update(89)
         print(s)
         output = self.captured_output.getvalue()
-        expected_output = "[Square] (10) 0/0 - 5\n"
+        expected_output = "[Square] (89) 0/0 - 5\n"
         self.assertEqual(output, expected_output)
 
     def test_update_with_2args(self):
         s = Square(5)
-        s.update(1, 2)
+        s.update(89, 1)
         print(s)
         output = self.captured_output.getvalue()
-        expected_output = "[Square] (1) 0/0 - 2\n"
+        expected_output = "[Square] (89) 0/0 - 1\n"
         self.assertEqual(output, expected_output)
 
     def test_update_with_3args(self):
         s = Square(5)
-        s.update(1, 2, 3)
+        s.update(89, 1, 2)
         print(s)
         output = self.captured_output.getvalue()
-        expected_output = "[Square] (1) 3/0 - 2\n"
+        expected_output = "[Square] (89) 2/0 - 1\n"
         self.assertEqual(output, expected_output)
 
     def test_update_with_4args(self):
         s = Square(5)
-        s.update(1, 2, 3, 4)
+        s.update(89, 1, 2, 3)
         print(s)
         output = self.captured_output.getvalue()
-        expected_output = "[Square] (1) 3/4 - 2\n"
+        expected_output = "[Square] (89) 2/3 - 1\n"
         self.assertEqual(output, expected_output)
 
     def test_update_with_0args(self):
@@ -200,34 +200,34 @@ class TestUpdateSquare(unittest.TestCase):
 
     def test_update_with_1kwargs(self):
         s = Square(5)
-        s.update(id=10)
+        s.update(id=89)
         print(s)
         output = self.captured_output.getvalue()
-        expected_output = "[Square] (10) 0/0 - 5\n"
+        expected_output = "[Square] (89) 0/0 - 5\n"
         self.assertEqual(output, expected_output)
 
     def test_update_with_2kwargs(self):
         s = Square(5)
-        s.update(id=1, size=2)
+        s.update(id=89, size=1)
         print(s)
         output = self.captured_output.getvalue()
-        expected_output = "[Square] (1) 0/0 - 2\n"
+        expected_output = "[Square] (89) 0/0 - 1\n"
         self.assertEqual(output, expected_output)
 
     def test_update_with_3kwargs(self):
         s = Square(5)
-        s.update(id=1, size=2, x=3)
+        s.update(id=89, size=1, x=2)
         print(s)
         output = self.captured_output.getvalue()
-        expected_output = "[Square] (1) 3/0 - 2\n"
+        expected_output = "[Square] (89) 2/0 - 1\n"
         self.assertEqual(output, expected_output)
 
     def test_update_with_4kwargs(self):
         s = Square(5)
-        s.update(id=1, size=2, x=3, y=4)
+        s.update(id=89, size=1, x=2, y=3)
         print(s)
         output = self.captured_output.getvalue()
-        expected_output = "[Square] (1) 3/4 - 2\n"
+        expected_output = "[Square] (89) 2/3 - 1\n"
         self.assertEqual(output, expected_output)
 
 
