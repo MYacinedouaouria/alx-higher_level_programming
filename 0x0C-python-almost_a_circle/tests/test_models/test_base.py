@@ -3,6 +3,9 @@
 
 import unittest
 from models.base import Base
+from models.rectangle import Rectangle
+from io import StringIO
+import sys
 
 
 class TestBase(unittest.TestCase):
@@ -49,5 +52,5 @@ class TestDictionaryToJSONString(unittest.TestCase):
         json_dictionary = Base.to_json_string([dictionary])
         print(json_dictionary)
         output = self.captured_output.getvalue()
-        expected_o = "[{"x": 2, "width": 10, "id": 1, "height": 7, "y": 8}]\n"
+        expected_o = '[{"x": 2, "y": 8, "id": 1, "height": 7, "width": 10}]\n'
         self.assertEqual(output, expected_o)

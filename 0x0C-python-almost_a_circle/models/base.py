@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 """ this module defines a class called 'Base'"""
 
+import json
+
 
 class Base:
     """ defines class Base with:
@@ -28,3 +30,12 @@ class Base:
         """ reset the counter of objects to 0"""
 
         cls.__nb_objects = 0
+
+    @staticmethod
+    def to_json_string(list_dictionaries):
+        """ returns the JSON string representation of list_dictionaries"""
+
+        if (list_dictionaries is None or len(list_dictionaries) == 0):
+            return "[]"
+        else:
+            return json.dumps(list_dictionaries)
