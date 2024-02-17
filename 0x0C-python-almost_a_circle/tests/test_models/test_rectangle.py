@@ -302,3 +302,25 @@ class TestRectangleInputsValues(unittest.TestCase):
         with self.assertRaises(ValueError) as e:
             Rectangle(3, 2, 2, -5)
         self.assertEqual(str(e.exception), "y must be >= 0")
+
+
+class TestRectangleToDictionary(unittest.TestCase):
+
+    def setUp(self):
+        self.captured_output = StringIO()
+        sys.stdout = self.captured_output
+        Base.reset_nb_objects()
+
+    def tearDown(self):
+        sys.stdout = sys.__stdout__
+        self.captured_output.truncate(0)
+        self.captured_output.truncate(0)
+
+    def test_rectangle_to_dictionary(self):
+        r1 = Rectangle(10, 2, 1, 9)
+        r1_dictionary = r1.to_dictionary()
+        sorted_r1_dictionary = dict(sorted(r1_dictionary.items()))
+        print(sorted_r1_dictionary)
+        output = self.captured_output.getvalue()
+        expected_output = "{'id': 1, 'height': 2, 'width': 10, 'x': 1, 'y': 9}"
+        self.assertEqual(output, expected_output)
