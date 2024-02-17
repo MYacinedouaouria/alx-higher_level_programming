@@ -252,5 +252,5 @@ class TestSquareToDictionry(unittest.TestCase):
         s1_dictionary = s1.to_dictionary()
         print(s1_dictionary)
         output = self.captured_output.getvalue()
-        expected_output = "{'id': 1, 'x': 2, 'size': 10, 'y': 1}"
+        expected_output = "{'id': 1, 'x': 2, 'size': 10, 'y': 1}\n"
         self.assertEqual(output, expected_output)
