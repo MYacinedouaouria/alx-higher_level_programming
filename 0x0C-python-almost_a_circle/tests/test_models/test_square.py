@@ -93,7 +93,7 @@ class TestSquareInputsTypes(unittest.TestCase):
 
     def test_invalid_size_type(self):
         with self.assertRaises(TypeError) as e:
-            square(None)
+            Square(None)
         self.assertEqual(str(e.exception), "width must be an integer")
 
         with self.assertRaises(TypeError) as e:
@@ -102,7 +102,7 @@ class TestSquareInputsTypes(unittest.TestCase):
 
     def test_invalid_x_type(self):
         with self.assertRaises(TypeError) as e:
-            square(2, None)
+            Square(2, None)
         self.assertEqual(str(e.exception), "x must be an integer")
 
         with self.assertRaises(TypeError) as e:
@@ -111,7 +111,7 @@ class TestSquareInputsTypes(unittest.TestCase):
 
     def test_invalid_y_type(self):
         with self.assertRaises(TypeError) as e:
-            square(2, 3, None)
+            Square(2, 3, None)
         self.assertEqual(str(e.exception), "y must be an integer")
 
         with self.assertRaises(TypeError) as e:
@@ -123,11 +123,11 @@ class TestSquareInvalidValues(unittest.TestCase):
 
     def test_size_under_or_equal_zero(self):
         with self.assertRaises(ValueError) as e:
-            Rectangle(0, 2)
+            Square(0, 2)
         self.assertEqual(str(e.exception), "width must be > 0")
 
         with self.assertRaises(ValueError) as e:
-            Rectangle(-5, 2)
+            Square(-5, 2)
         self.assertEqual(str(e.exception), "width must be > 0")
 
     def test_x_under_zero(self):
