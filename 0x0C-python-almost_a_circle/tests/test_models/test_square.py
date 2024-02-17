@@ -87,3 +87,55 @@ class TestDisplay(unittest.TestCase):
         output = self.captured_output.getvalue()
         expected_output = "\n\n\n ###\n ###\n ###\n"
         self.assertEqual(output, expected_output)
+
+
+class TestSquareInputsTypes(unittest.TestCase):
+
+    def test_invalid_size_type(self):
+        with self.assertRaises(TypeError) as e:
+            square(None)
+        self.assertEqual(str(e.exception), "width must be an integer")
+
+        with self.assertRaises(TypeError) as e:
+            Square("s")
+        self.assertEqual(str(e.exception), "width must be an integer")
+
+    def test_invalid_x_type(self):
+        with self.assertRaises(TypeError) as e:
+            square(2, None)
+        self.assertEqual(str(e.exception), "x must be an integer")
+
+        with self.assertRaises(TypeError) as e:
+            Square(2, "s")
+        self.assertEqual(str(e.exception), "x must be an integer")
+
+    def test_invalid_y_type(self):
+        with self.assertRaises(TypeError) as e:
+            square(2, 3, None)
+        self.assertEqual(str(e.exception), "y must be an integer")
+
+        with self.assertRaises(TypeError) as e:
+            Square(2, 2, "y")
+        self.assertEqual(str(e.exception), "y must be an integer")
+
+
+class TestSquareInvalidValues(unittest.TestCase):
+
+    def test_size_under_or_equal_zero(self):
+        with self.assertRaises(ValueError) as e:
+            Rectangle(0, 2)
+        self.assertEqual(str(e.exception), "width must be > 0")
+
+        with self.assertRaises(ValueError) as e:
+            Rectangle(-5, 2)
+        self.assertEqual(str(e.exception), "width must be > 0")
+
+    def test_x_under_zero(self):
+        with self.assertRaises(ValueError) as e:
+            Square(3, -2, 2)
+        self.assertEqual(str(e.exception), "x must be >= 0")
+
+    def test_y_under_zero(self):
+        with self.assertRaises(ValueError) as e:
+            Square(3, 2, -5)
+        self.assertEqual(str(e.exception), "y must be >= 0")
