@@ -319,8 +319,7 @@ class TestRectangleToDictionary(unittest.TestCase):
     def test_rectangle_to_dictionary(self):
         r1 = Rectangle(10, 2, 1, 9)
         r1_dictionary = r1.to_dictionary()
-        sorted_r1_dictionary = dict(sorted(r1_dictionary.items()))
-        print(sorted_r1_dictionary)
+        print(r1_dictionary)
         output = self.captured_output.getvalue()
-        expected_output = "{'id': 1, 'height': 2, 'width': 10, 'x': 1, 'y': 9}"
+        expected_output = "{'x': 1, 'y': 9, 'id': 1, 'height': 2, 'width': 10}\n"
         self.assertEqual(output, expected_output)

@@ -32,6 +32,17 @@ class Rectangle(Base):
         h = self.height
         return f"[Rectangle] ({id}) {self.x}/{self.y} - {w}/{h}"
 
+    def to_dictionary(self):
+        """ returns the dictionary representation of a Rectangle"""
+
+        return {
+            'x': self.x,
+            'y': self.y,
+            'id': self.id,
+            'height': self.height,
+            'width': self.width
+        }
+
     def area(self):
         """ returns the area of a rectangle"""
 
