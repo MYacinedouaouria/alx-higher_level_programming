@@ -321,5 +321,43 @@ class TestRectangleToDictionary(unittest.TestCase):
         r1_dictionary = r1.to_dictionary()
         print(r1_dictionary)
         output = self.captured_output.getvalue()
-        expected_output = "{'x': 1, 'y': 9, 'id': 1, 'height': 2, 'width': 10}\n"
+        expected_out = "{'x': 1, 'y': 9, 'id': 1, 'height': 2, 'width': 10}\n"
+        self.assertEqual(output, expected_out)
+
+
+class TestSaveRectangleToFile(unittest.TestCase):
+
+    def setUp(self):
+        self.captured_output = StringIO()
+        sys.stdout = self.captured_output
+        Base.reset_nb_objects()
+
+    def tearDown(self):
+        sys.stdout = sys.__stdout__
+        self.captured_output.truncate(0)
+        self.captured_output.truncate(0)
+
+    def test_save_None_list_rectangle(self):
+        Rectangle.save_to_file(None)
+        with open("Rectangle.json", "r") as file:
+            print(file.read())
+        output = self.captured_output.getvalue()
+        expected_output = "[]\n"
         self.assertEqual(output, expected_output)
+
+    def test_save_empty_list_rectangle(self):
+        Rectangle.save_to_file([])
+        with open("Rectangle.json", "r") as file:
+            print(file.read())
+        output = self.captured_output.getvalue()
+        expected_output = "[]\n"
+        self.assertEqual(output, expected_output)
+
+    def test_save_list_rectangle(self):
+        r1 = Rectangle(10, 7, 2, 8)
+        Rectangle.save_to_file([r1])
+        with open("Rectangle.json", "r") as file:
+            print(file.read())
+        output = self.captured_output.getvalue()
+        expected_ou = '[{"x": 2, "y": 8, "id": 1, "height": 7, "width": 10}]\n'
+        self.assertEqual(output, expected_ou)
