@@ -271,3 +271,41 @@ class TestSquareToDictionry(unittest.TestCase):
         output = self.captured_output.getvalue()
         expected_output = "{'id': 1, 'x': 2, 'size': 10, 'y': 1}\n"
         self.assertEqual(output, expected_output)
+
+
+class TestSaveSquareToFile(unittest.TestCase):
+
+    def setUp(self):
+        self.captured_output = StringIO()
+        sys.stdout = self.captured_output
+        Base.reset_nb_objects()
+
+    def tearDown(self):
+        sys.stdout = sys.__stdout__
+        self.captured_output.truncate(0)
+        self.captured_output.truncate(0)
+
+    def test_save_None_list_square(self):
+        Square.save_to_file(None)
+        with open("Square.json", "r") as file:
+            print(file.read())
+        output = self.captured_output.getvalue()
+        expected_output = "[]\n"
+        self.assertEqual(output, expected_output)
+
+    def test_save_empty_list_square(self):
+        Square.save_to_file([])
+        with open("Square.json", "r") as file:
+            print(file.read())
+        output = self.captured_output.getvalue()
+        expected_output = "[]\n"
+        self.assertEqual(output, expected_output)
+
+    def test_save_list_square(self):
+        r1 = Square(10, 2, 1)
+        Square.save_to_file([r1])
+        with open("Square.json", "r") as file:
+            print(file.read())
+        output = self.captured_output.getvalue()
+        expected_output = '[{"id": 1, "x": 2, "size": 10, "y": 1}]\n'
+        self.assertEqual(output, expected_output)
