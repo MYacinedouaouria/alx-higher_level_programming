@@ -67,7 +67,7 @@ class Base:
         """returns the list of the JSON string representation json_string"""
 
         list_from_json = []
-        if ((len(json_string) == 0) or (json_string is None)):
+        if not json_string:
             return list_from_json
         else:
             list_from_json = json.loads(json_string)
