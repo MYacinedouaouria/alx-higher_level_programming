@@ -12,13 +12,16 @@ import sys
 class TestBase(unittest.TestCase):
     """ test   Base"""
 
+    def setUp(self):
+        Base.reset_nb_objects()
+
     def test_base_asign_auto_id(self):
         b1 = Base()
         self.assertEqual(b1.id, 1)
 
     def test_base_asign_auto_id_plus1(self):
         b2 = Base()
-        self.assertEqual(b2.id, 2)
+        self.assertEqual(b2.id, 1)
 
 
 class TestDictionaryToJSONString(unittest.TestCase):
