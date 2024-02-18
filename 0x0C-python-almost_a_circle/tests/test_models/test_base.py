@@ -94,7 +94,7 @@ class TestSaveRectangleToFile(unittest.TestCase):
         with open("Rectangle.json", "r") as file:
             print(file.read())
         output = self.captured_output.getvalue()
-        expected_out = '{"y": 8, "x": 2, "id": 1, "width": 10, "height": 7}\n'
+        expected_out = '[{"x": 2, "y": 8, "id": 1, "height": 7, "width": 10}]\n'
         self.assertEqual(output, expected_out)
 
 
@@ -132,5 +132,5 @@ class TestSaveSquareToFile(unittest.TestCase):
         with open("Square.json", "r") as file:
             print(file.read())
         output = self.captured_output.getvalue()
-        expected_output = '{"id": 1, "x": 2, "size": 10, "y": 1}\n'
+        expected_output = '[{"id": 1, "x": 2, "size": 10, "y": 1}]\n'
         self.assertEqual(output, expected_output)
