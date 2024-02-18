@@ -217,7 +217,7 @@ class TestUpdateSquare_kwrgs(unittest.TestCase):
 
     def test_update_with_1kwargs(self):
         s = Square(5)
-        s.update(**{'id': 89})
+        s.update(id=89)
         print(s)
         output = self.captured_output.getvalue()
         expected_output = "[Square] (89) 0/0 - 5\n"
@@ -225,7 +225,7 @@ class TestUpdateSquare_kwrgs(unittest.TestCase):
 
     def test_update_with_2kwargs(self):
         s = Square(5)
-        s.update(**{'id': 89, 'size': 1})
+        s.update(id=89, size=1)
         print(s)
         output = self.captured_output.getvalue()
         expected_output = "[Square] (89) 0/0 - 1\n"
@@ -233,7 +233,7 @@ class TestUpdateSquare_kwrgs(unittest.TestCase):
 
     def test_update_with_3kwargs(self):
         s = Square(5)
-        s.update(**{'id': 89, 'size': 1, 'x': 2})
+        s.update(id=89, size=1, x=2)
         print(s)
         output = self.captured_output.getvalue()
         expected_output = "[Square] (89) 2/0 - 1\n"
@@ -241,7 +241,7 @@ class TestUpdateSquare_kwrgs(unittest.TestCase):
 
     def test_update_with_4kwargs(self):
         s = Square(5)
-        s.update(**{'id': 89, 'size': 1, 'x': 2, 'y': 3})
+        s.update(id=89, size=1, x=2, y=3)
         print(s)
         output = self.captured_output.getvalue()
         expected_output = "[Square] (89) 2/3 - 1\n"
