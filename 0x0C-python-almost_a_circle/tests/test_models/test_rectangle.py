@@ -354,10 +354,9 @@ class TestSaveRectangleToFile(unittest.TestCase):
         self.assertEqual(output, expected_output)
 
     def test_save_list_rectangle(self):
-        r1 = Rectangle(10, 7, 2, 8)
-        Rectangle.save_to_file([r1])
+        Rectangle.save_to_file([Rectangle(1, 2)])
         with open("Rectangle.json", "r") as file:
             print(file.read())
         output = self.captured_output.getvalue()
-        expected_ou = '[{"x": 2, "y": 8, "id": 1, "height": 7, "width": 10}]\n'
+        expected_ou = '[{"x": 0, "y": 0, "id": 1, "height": 2, "width": 1}]\n'
         self.assertEqual(output, expected_ou)
