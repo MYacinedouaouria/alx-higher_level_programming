@@ -141,7 +141,7 @@ class TestSquareInvalidValues(unittest.TestCase):
         self.assertEqual(str(e.exception), "y must be >= 0")
 
 
-class TestUpdateSquare(unittest.TestCase):
+class TestUpdateSquare_args(unittest.TestCase):
 
     @classmethod
     def setUPClass(self):
@@ -197,6 +197,23 @@ class TestUpdateSquare(unittest.TestCase):
         output = self.captured_output.getvalue()
         expected_output = "[Square] (1) 0/0 - 5\n"
         self.assertEqual(output, expected_output)
+
+
+class TestUpdateSquare_kwrgs(unittest.TestCase):
+
+    @classmethod
+    def setUPClass(self):
+        Base.reset_nb_objects()
+
+    def setUp(self):
+        self.captured_output = StringIO()
+        sys.stdout = self.captured_output
+        Base.reset_nb_objects()
+
+    def tearDown(self):
+        sys.stdout = sys.__stdout__
+        self.captured_output.truncate(0)
+        self.captured_output.seek(0)
 
     def test_update_with_1kwargs(self):
         s = Square(5)
