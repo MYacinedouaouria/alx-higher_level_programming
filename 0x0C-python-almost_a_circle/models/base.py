@@ -61,3 +61,13 @@ class Base:
                     f"{cls.__name__}.json", "w", encoding="utf-8"
                  ) as file:
                 file.write(json_dictionary)
+
+    @staticmethod
+    def from_json_string(json_string):
+        """returns the list of the JSON string representation json_string"""
+
+        list_from_json = []
+        if ((len(json_string) == 0) or json_string is None):
+            return list_from_json
+        list_from_json = json.loads(json_string)
+        return list_from_json
