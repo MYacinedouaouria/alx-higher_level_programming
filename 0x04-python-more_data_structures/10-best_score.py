@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 # defines a function that returns a key with the biggest integer value
 
 def best_score(a_dictionary):
