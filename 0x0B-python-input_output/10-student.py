@@ -21,18 +21,16 @@ class Student:
         self.age = age
 
     def to_json(self, attrs=None):
-        """ retrieves a dictionary representation of a Student instance"""
+        """ retrieves a dictionary representation of a Student instance """
 
         dictio = {}
-        if attrs is None:
-            return self.__dict__
-        elif (
-            isinstance(attrs, list)
-            and all(isinstance(attr, str) for attr in attrs)
-        ):
-            for a in attrs:
-                if hasattr(self, a):
-                    dictio[a] = getattr(self, a)
-                    return dictio
-        else:
-            return self.__dict__
+        if ((attrs is None) or len(attrs) == 0):
+            dictio["first_name"] = self.first_name
+            dictio["last_name"] = self.last_name
+            dictio["age"] = self.age
+        elif (isinstance(attrs, list) and (
+                 all(isinstance(e, str) for e in attrs))):
+            for attr in attrs:
+                if (hasattr(self, attr)):
+                    dictio[attr] = getattr(self, attr)
+        return dictio
