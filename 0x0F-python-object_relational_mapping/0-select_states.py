@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
-""" this script lists all states from the database hbtn_0e_0_usa"""
+""" this script lists all states from the database hbtn_0e_0_us"""
 
-import MySQLdb
-import sys
 
 if (__name__ == "__main__"):
+    import MySQLdb
+    import sys
+
     conn = MySQLdb.connect(
             host="localhost",
             user=sys.argv[1],
