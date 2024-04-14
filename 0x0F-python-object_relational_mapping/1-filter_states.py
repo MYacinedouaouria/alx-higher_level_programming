@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """This script lists all states with a name starting with 'N'
-    from the database hbtn_0e_0_usa."""
+    from the database hbtn_0e_0_usa
+    using MySQLdb module."""
 
 if __name__ == "__main__":
     import MySQLdb
