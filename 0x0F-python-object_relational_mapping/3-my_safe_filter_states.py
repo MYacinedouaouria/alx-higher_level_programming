@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 """This script retrieves states from hbtn_0e_0_usa matching the provided
 state name.
 """
