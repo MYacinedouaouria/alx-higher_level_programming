@@ -19,7 +19,7 @@ if (__name__ == "__main__"):
             state_name = sys.argv[4]
             query = """SELECT * FROM states WHERE name =
             '{state_name}' ORDER BY id ASC""".format(state_name=state_name)
-            cur.execute(query, (state_name,))
+            cur.execute(query)
             query_rows = cur.fetchall()
             for row in query_rows:
                 print(row)
