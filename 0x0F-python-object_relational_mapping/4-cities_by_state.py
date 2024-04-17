@@ -11,7 +11,7 @@ if (__name__ == "__main__"):
             passwd=sys.argv[2],
             db=sys.argv[3]
             )
-    cur = conn.cursor();
+    cur = conn.cursor()
     query = """
     SELECT c.id, c.name, s.name
     FROM cities c
